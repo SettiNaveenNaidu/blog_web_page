@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_05_032505) do
   create_table "drafts", force: :cascade do |t|
     t.string "title"
     t.string "featured_image"
-    t.string "topic_name"
+    t.string "topic"
     t.text "text"
     t.integer "author_id", null: false
     t.integer "topic_id", null: false
@@ -117,7 +117,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_05_032505) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
-    t.string "topic"
+    t.string "topic",default:'naveen'
     t.string "featured_image"
     t.text "text"
     t.datetime "published_at"
@@ -128,7 +128,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_05_032505) do
     t.datetime "updated_at", null: false
     t.integer "view_count", default: 0, null: false
     t.integer "reading_time", default: 0
-    t.integer "topic_id"
+    t.integer "topic_id",null:true
     t.index ["author_id"], name: "index_posts_on_author_id"
     t.index ["topic_id"], name: "index_posts_on_topic_id"
   end

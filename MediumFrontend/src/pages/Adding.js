@@ -38,18 +38,20 @@ const Add = ()=> {
             title:title,
             topic:topic,
             text:content,
+            author_id:1,
             featured_image:img,
         }
+        console.log(postdata)
 
-
-        axios.post('http://127.0.0.1:3000/create/post',postdata,{headers})
-        .then((res)=>{
+       const resp= axios.post('http://127.0.0.1:3000/create/post',postdata,{headers})
+        .then((res)=>{ 
             console.log('Post Saved')
         })
         .catch((err)=>{
             console.log('failed posting')
         })
-        navigate('/')        
+        navigate('/')  
+        console.log(resp)      
     }
 
     const handleDraft=()=>{
@@ -57,7 +59,8 @@ const Add = ()=> {
             title:title,
             topic:topic,
             text:content,
-            featured_image:img
+            author_id:1,
+            featured_image:img,
         }
         axios.post('http://127.0.0.1:3000/draft/create',postdata,{headers})
         .then((res)=>console.log('Post Drafted'))

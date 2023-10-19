@@ -6,6 +6,7 @@ import './Savedposts.css'
 const Saved=()=>{
     const [savedposts,setSavedposts]=useState([])
     const token=localStorage.getItem('jwtToken')
+    const [author,setAuthor]=useState('')
     const headers={
         'authToken':token
     }
@@ -14,6 +15,7 @@ const Saved=()=>{
         axios.get('http://127.0.0.1:3000/author/savedPosts', {headers})
         .then((res)=>{
             setSavedposts(res.data)
+            setAuthor(res.data[0].author_name)
             console.log(savedposts)
         })
         .catch((err)=>{
@@ -22,13 +24,10 @@ const Saved=()=>{
     },[change])
     return(
         <div>
-            <h3>Saved Posts {}</h3>
+            <h3 style={{fontSize:'30px'}}>Your Saved Posts {author}</h3>
              <div className="All_posts">
-            {
-                
-               savedposts.map((item,index)=>{
-                
-                return(
+            {             
+               savedposts.map((item,index)=>(             
                     <div className="all_each_post" key={index}>
                     <div className="details">
                         <div className="author">
@@ -45,17 +44,11 @@ const Saved=()=>{
                             </div>
                     </div>
                     <img className="image_post" src={item.image}></img>
-                    </div>                        
-                )
-                
-            })
-           
+                    </div>                                    
+               ))         
             }
-            </div>
-            
+            </div>          
         </div>
     )
-
-
 }
 export default Saved

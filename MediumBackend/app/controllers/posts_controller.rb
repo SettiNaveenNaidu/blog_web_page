@@ -72,8 +72,10 @@ class PostsController < ApplicationController
         @post = Post.new(JSON.parse(request.body.read))
         author_id =  @current_author_id
         @post.author_id = author_id
-        topic = Topic.find(post_params["topic_id"])
-        @post.topic = topic.name
+        # topic = Topic.find(1)
+        @post.topic = post_params["topic"]
+        # topic = Topic.find(post_params["topic_id"])
+        # @post.topic = topic.name
         @post.reading_time = reading_time(post_params["text"])
         if @post.save
           render json: {message:"Post Has been created"}, status: :created

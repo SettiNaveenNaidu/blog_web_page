@@ -8,8 +8,7 @@ const Draftposts=()=>{
     const [drafts,setDrafts]=useState([])
     const headers={
         'authToken':token
-    }
-    
+    }   
     useEffect(()=>{
         axios.get('http://127.0.0.1:3000/draft/get/all', { headers }).then((res)=>setDrafts(res.data))
         .catch((err)=>console.log(err))
@@ -22,13 +21,9 @@ const Draftposts=()=>{
         .catch((err)=>console.log(err))
     }
     return (
-        <div>
-            
+        <div>           
         </div>
-
     )
-    
-
 }
 
 export default Draftposts

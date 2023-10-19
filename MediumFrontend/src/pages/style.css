@@ -131,16 +131,17 @@
 }
 .story_cont{
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;   
     align-items: center;
     width: 70vw;
-    height: 70vh;
+    min-height: 50vh;
     margin: auto;
     margin-top: 30px;
     padding: 30px;
-    background-color: antiquewhite;
+    background-color: rgb(112, 134, 163);
     color: black;
+    line-height: 1.6;
+    border-radius: 8px;
 }
 .story{
     font-size: 30px;

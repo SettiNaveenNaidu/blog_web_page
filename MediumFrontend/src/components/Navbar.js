@@ -15,8 +15,8 @@ const Navbar=()=>{
     })
 
     const hanglelog=()=>{
-        localStorage.removeItem('jwtToken')
         navigate('/')
+        localStorage.removeItem('jwtToken')
         localStorage.clear()
         setStatus(false)
     }
@@ -37,12 +37,13 @@ const Navbar=()=>{
                    <Link className="ourstory" to='/ourstory'>Our Story</Link>
                    <Link className="membership" to='/membership'>MemberShip</Link>
                    <Link className="write" to='/addpost'>Write</Link> 
+                   <Link className="ourstory" to='/ourstory'>Contact Us</Link>
                    {  status ? (<Link onClick={hanglelog}>Logout</Link>):(<Link to='/signin' className="sign_nav">Sign In</Link>)
                    }
                    <div className="Profile_view">
                    {status && (
                     <div>
-                    <div className="nav_profile"><Link to='/userprofile'><i class="fa-solid fa-user" style={{marginRight:'8px'}}></i>My Profile</Link></div>
+                    <div className="nav_profile"><Link to='/userprofile'><Link style={{marginRight:'8px',color:'white'}}></Link>My Profile</Link></div>
                  </div>
                   
                    )}

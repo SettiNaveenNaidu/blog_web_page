@@ -3,33 +3,46 @@
     padding: 0%;
     box-sizing: border-box;
 }
+
 .navbar{
     position: sticky;
     z-index: 100;
+    background-color: black;
+    color: white;
+    margin-bottom: 40px;
 }
+
 .nav_container{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    height: 10vh;
+    justify-content: space-between;
+    height: 8vh;
     background-color: white;
     align-items: center;
+    background-color: black;
+    color: white;
 }
+
 .nav_elements{
     display: flex;
     flex-direction: row;
     gap: 25px;
     font-size: 17px;
 }
+
 .nav_elements a{
     text-decoration: none;
+    color: white;
+    margin-right: 25px;
 }
+
 .footer{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     padding: 5px;
 }
+
 .footer a{
     padding: 8px;
     margin-top: 50px;
@@ -41,8 +54,13 @@
     position: absolute;
     z-index: 1;
 }
+
 .nav_profile:hover .drop_profile{
     visibility: visible;
     position: absolute;
+}
+
+.logo{
+    margin-left: 10vw;
 }
 

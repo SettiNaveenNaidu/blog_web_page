@@ -46,10 +46,9 @@ const Userposts=()=>{
 
     return (
         <div>
-            <h3>Your Posts {author}</h3>
+            <span className="your_posts">Your Posts {author}</span>
             <div className="All_posts">
-            {
-                
+            {            
                userposts.map((item)=>{                
                 return(
                     <div className="all_each_post" key={item.id}>

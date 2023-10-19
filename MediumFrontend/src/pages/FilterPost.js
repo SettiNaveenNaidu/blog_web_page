@@ -50,39 +50,38 @@ const Filter=({filter})=>{
     const day = dateObj.getDate()
     const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
     
-    return (
-        <>
+    return (    
            <div className="All_posts">
             {
                 filteredPosts.map((item)=>{
                     return(
-                        <div className="all_each_post" key={item.id}>
-                        <div className="details">
-                            <div className="author">
-                                <img src={item.image} className="author_img"/>
-                                <div>{item.author_name}</div>
-                            </div>
-                            <div>
-                                <h2 className="title">{item.title}</h2>                                
-                            </div>
-                            <div className="des" >{item.text.substring(0,50)}</div>
-                            <div className="datetime">
-                                <div>{formattedDate}</div>
-                                <Link to={`/eachpost/${item.id}`} onClick={()=>{
-                                    axios.post(`http://127.0.0.1:3000/add/view/${item.id}`)
-
-                                }} className="view_more">View More</Link>
-                                <i class="fa-regular fa-eye"></i>
-                                <span>{item.view_count}</span>
+                        <div className="all_each_posts" key={item.id}>
+                            <div className="details">
+                                <div className="author">
+                                    <img src={item.image} className="authors_img"/>
+                                    <div>{item.author_name}</div>
                                 </div>
-                        </div>
+                                <div>
+                                    <h2 className="title">{item.title}</h2>                                
+                                </div>
+                                <div className="des" >{item.text.substring(0,50)}</div>
+                                <div className="date_time">
+                                    <div>{formattedDate}</div>
+                                    <Link to={`/eachpost/${item.id}`} onClick={()=>{
+                                        axios.post(`http://127.0.0.1:3000/add/view/${item.id}`)
+
+                                    }} className="view_more">View More</Link>
+                                    <i class="fa-regular fa-eye"></i>
+                                    <span>{item.view_count}</span>
+                                </div>
+                            </div>
                         <img className="image_post" src={item.image}></img>
                         </div>                        
                     )
                 })
             }
         </div>
-        </>        
+               
     )
 }
 export default Filter

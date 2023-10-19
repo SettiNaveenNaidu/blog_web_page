@@ -36,24 +36,18 @@ const UserProfile=()=>{
         })
         .catch((err)=>console.log(err))
     }
-
     return (
         <div className="my_profile">
-           <p>E-Mail : {details.email}</p>
-           <p>No Of Followers : {details.followers_count}</p>
-           <div className="prof_btn">
+           <span>E-Mail : {details.email}</span><br/>
+           <span>No Of Followers : {details.followers_count}</span>       
+           <p>{details.about }</p>     
+            <textarea value={usertext} onChange={(e)=>setUserdata(e.target.value)} placeholder="enter to update bio" className="text_area" rows={10} style={{fontSize:'15px'}}/> 
+            <button onClick={handelUpdateBio} className="update_button">Update Details</button>
+            <div className="prof_btn">
            <Link to='/userdrafts'>Draft Posts</Link>
            <Link to='/savedposts'>Saved Posts</Link>
            <Link to='/userposts'>My Posts</Link>
-           </div>
-          
-           <p>{details.about }</p>
-           <div>
-            <textarea value={usertext} onChange={(e)=>setUserdata(e.target.value)} placeholder="enter to update bio"/> 
-            <button onClick={handelUpdateBio}>Update Details</button>
-          
-           </div>
-            
+           </div>         
         </div>
     )
 }

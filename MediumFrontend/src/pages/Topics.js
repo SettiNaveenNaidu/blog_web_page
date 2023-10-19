@@ -11,11 +11,11 @@ const fakeTopics = [
     { id: 6, title: 'Cinema' },
   
   ]
-const topics=()=>{
+const Topics=()=>{
     return (
-        <div className="topic-list">
+        <div className="topic-list" >
           {fakeTopics.map(topic => (
-            <div key={topic.id} className="topic_item">
+            <div key={topic.id} className="topic_item" style={{padding:'5px',display:'flex',alignItems:'center',justifyContent:'center'}}>
               {topic.title}
             </div>
           ))}
@@ -23,4 +23,4 @@ const topics=()=>{
       )
 
 }
-export default topics
+export default Topics

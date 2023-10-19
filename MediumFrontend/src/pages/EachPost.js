@@ -36,9 +36,7 @@ const Eachpost =()=>{
               .catch((error) => {
                 console.error('Error fetching posts: ', error)      
               });
-            } 
-               
-          
+            }        
         , [])
 
     useEffect(()=>{
@@ -75,9 +73,8 @@ const Eachpost =()=>{
     }
 
     const handlesave=()=>{
-        axios.post(`http://127.0.0.1:3000/author/saveForLater/${postId}`, {}, { headers}).then((res)=>setSaved(false))
+        axios.post(`http://127.0.0.1:3000/author/saveForLater/${postId}`, {}, { headers}).then((res)=>setSaved(true))
         .catch((err)=>console.log(err))
-
     }
 
     const openbox=()=>{
@@ -117,32 +114,30 @@ const Eachpost =()=>{
         <>      
         <div className="each_post">
             <div className="content_each">
-                <h1 className="each_post_title">{eachpost.title}</h1>
+                <h1 className="each_post_title" style={{fontSize:'40px'}}>{eachpost.title}</h1>
                 <div className="userdetails">
                     <img src={eachpost.image} style={{width:'50px',height:'50px',borderRadius:'20px',padding:'5px'}}></img>
                     <div className="user"> 
                     <Link to={`/otheruser/${eachpost.author_id}`} className='eachpost_author'>{eachpost.author_name}</Link>
                     <p>Published-On :{formattedDate}</p></div>
-
                 </div>
             <hr/>
             <div className="buttons_each">
             <div className="follow_btn">
-                <button onClick={handlefollow}>{followed? 'Follow' : 'Following'}</button>
+                <button onClick={handlefollow} style={{backgroundColor:'#187ec7',color:'white',padding:'6px'}}>{followed? 'Follow' : 'Following'}</button>
             </div>
             <div className="comment_btn">
-                <button onClick={openbox}>Comment</button>
+                <button onClick={openbox} style={{backgroundColor:'#187ec7',color:'white',padding:'6px'}}>Comment</button>
                 <p>{eachpost.comments_count}</p>
             </div>
             <div className="like_btn">
-                {liked?(<button onClick={handledislike}>DisLike</button>):(<button onClick={handlelike}>Like</button>)}
+                {liked?(<button onClick={handledislike} style={{padding:'6px'}}>DisLike</button>):(<button onClick={handlelike} style={{backgroundColor:'#187ec7',color:'white',padding:'6px'}}>Like</button>)}
                 {liked?(<p>{eachpost.likes_count+1}</p>):(<p>{eachpost.likes_count}</p>)}
             </div>
             <div className="saved">
                 {
-                    saved?(<button onClick={handlesave}>Save</button>):(<div>Saved</div>)
-                }
-                
+                    saved?(<div></div>):(<button onClick={handlesave}>Save</button>)
+                }           
             </div>
             </div>
             {

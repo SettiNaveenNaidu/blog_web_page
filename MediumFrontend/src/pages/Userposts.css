@@ -18,6 +18,7 @@ h3{
     margin-left: 200px;
     margin-top: 30px;
 }
+
 .all_each_post{
     display: flex;
     flex-direction: row;
@@ -55,6 +56,13 @@ h3{
     gap:30px;
     
 }
+
 .view_more{
     text-decoration: none;
 }
+
+.your_posts{
+    font-size: 30px;
+    margin-left: 200px;
+}
+

@@ -12,21 +12,25 @@ const Home=()=>{
     const [recommend,setRecommend]=useState([])
     const token=localStorage.getItem('jwtToken')
     useEffect(()=>{
-       axios.get('http://127.0.0.1:3000/author/showAll').then((res)=>{
+       const res = axios.get('http://127.0.0.1:3000/author/showAll').then((res)=>{
         setPosts(res.data)
        }).catch((err)=>console.log('Error in Show All Posts'))
+
 
        axios.get('http://127.0.0.1:3000/get/topPosts').then((res)=>setTop(res.data))
         .catch((err)=>{
             console.log(err)
         })
         },[])
+
     useEffect(()=>{
         axios.get('http://127.0.0.1:3000/post/recommended').then((res)=>{
             setRecommend(res.data)
         })
         .catch((err)=>console.log(err))
     })
+
+    
     
     const dateObj = new Date()
     const year = dateObj.getFullYear()
@@ -61,7 +65,7 @@ const Home=()=>{
             
     return(
         <div className="Home">
-            <div className='wallpaper'>
+            <div className='wallpaper' >
                {token?(''):(<Large/>)}
             </div>
             <div className="trending">
@@ -79,7 +83,7 @@ const Home=()=>{
                                  </div>
                                  <span>{item.title}</span>
                                  <div className="trend_time">
-                                    <span>{formattedDate}</span>
+                                    <span className="format_date">{formattedDate}</span>
                                  </div>
                             </div>
                         </div>                       
@@ -88,10 +92,10 @@ const Home=()=>{
                 </div>
             </div> 
         <div className="bottom_cont">
-        <div><Filter filter={filter}/></div>  
+         
         <div className="aside">
             <div className="filter_cont">
-                <h4>Filters</h4>
+                <span className="filter_text">Filters</span>
             <div className="inputs">
             <input type='text' placeholder="Author NAME" onChange={handleAuthchange} value={filter.author}></input>
             <input type='date' placeholder="Date" value={filter.date} onChange={handledatachange}></input>
@@ -107,7 +111,12 @@ const Home=()=>{
                 <input type='text' placeholder="search" value={filter.search} onChange={handlesearchchange} className="search_box"/>
             </div>
             </div>
-            <div>
+            
+        </div>
+        <div className="bottom_content">
+            <div><Filter filter={filter}/></div>
+            <div className="topic_reco">
+            <div className="topics_container">
                 <h4 className="topic_name">Topics</h4>
                 <Topics/>
                 </div>  
@@ -117,19 +126,17 @@ const Home=()=>{
                     {
                         recommend.map((item)=>{
                             return(
-
                                 <div className="recommend_each">
-                                <img src={item.featured_image} className="recommend_img"/>
-                                <div>{item.title}</div>
-                                <i class="fa-solid fa-book-open"></i>
+                                    <img src={item.featured_image} className="recommend_img"/>
+                                    <div>{item.title}</div>
+                                    <i class="fa-solid fa-book-open"></i>
                                 </div>
                             )
                             })
-
                     }
-
                 </div>
             }
+            </div> 
         </div>
         
         </div>                    

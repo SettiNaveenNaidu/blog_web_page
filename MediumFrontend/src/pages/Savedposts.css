@@ -21,10 +21,13 @@ h3{
 .all_each_post{
     display: flex;
     flex-direction: row;
-    width: 700px;
-    height: 150px;
+    border-radius: 8px;
+    width: 50vw;
+    height: 200px;
+    padding: 20px;
     margin-left: 200px;
     justify-content: space-between;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .author{
     display: flex;

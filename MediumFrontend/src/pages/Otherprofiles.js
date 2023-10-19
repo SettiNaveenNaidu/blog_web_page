@@ -3,7 +3,7 @@ import { useEffect,useState} from "react"
 import { useParams } from 'react-router-dom'
 import OtherProfile from "./Following"
 import axios from "axios"
-import './ViewOther.css'
+import './OtherProfile.css'
 
 
 
@@ -11,6 +11,7 @@ const Viewother=()=>{
     
     const {authorId}=useParams()
     const [otherdetail,setOtherdetail]=useState('')
+    const [name,setName]=useState()
     useEffect(()=>{
        axios.get(`http://127.0.0.1:3000//author/details/${authorId}`).then((res)=>{       
         console.log(res.data)
@@ -21,8 +22,8 @@ const Viewother=()=>{
     
     return(
         <div>
-            <h3 style={{marginLeft:'700px'}}>Other Profile</h3>
-            <div className="otheruser">
+            <h3 style={{marginLeft:'620px',fontSize:'30px'}}>{otherdetail.name}'s Profile</h3>
+            <div className="other_user">
                 <div>User-Name : {otherdetail.name}</div>
                 <div>E-Mail : {otherdetail.email}</div>
                 <div>Followers : {otherdetail.followers_count}</div>
